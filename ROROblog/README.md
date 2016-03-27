@@ -19,8 +19,3 @@
 
     ./bin/www
 
-
-https://github.com/LYZ0106/node_blog.git
-git remote add origin git@github.com/LYZ0106/node_blog.git
-git remote add origin https://github.com/LYZ0106/node_blog.git
-git remote set-url origin https://github.com/LYZ0106/node_blog.git
