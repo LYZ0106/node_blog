@@ -1,0 +1,84 @@
+<!-- 头部内容 -->
+<%- include ./common/header %>
+
+<body>
+<!-- 顶部导航内容 -->
+<%- include ./common/nav %>
+
+<div class="container">
+    <div class="blog-header">
+        <h1 class="blog-title">RORO彦的Blog</h1>
+        <hr/>
+        <p class="lead blog-description">发现新鲜事，发现好玩事！</p>
+    </div>
+
+    <div class="row row-offcanvas row-offcanvas-left">
+        <!-- 侧边工具栏 -->
+        <%- include ./common/sidebar %>
+
+        <div class="col-xs-12 col-sm-9">
+            <p class="pull-left visible-xs">
+                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">菜单</button>
+            </p>
+            <div class="row">
+                <% if(user) {%>
+                <p>
+                    <a class="btn btn-sm btn-primary btn-align" href="/publish.do" role="button">
+                        <span class="glyphicon glyphicon-pencil"></span>&nbsp;发表
+                    </a>
+                </p>
+                <% } %>
+
+                <% if(articles.length) {%>
+                <% articles.forEach(function(article, index) {%>
+                <div class="col-xs-12 col-lg-9 blog-post blog-border">
+                    <h2 class="blog-post-title">
+                        <a href="/u/<%= article.author %>/<%= article.createTime.day %>/<%= article.title %>">
+                            <%= article.title %>
+                        </a>
+                    </h2>
+                    <p class="blog-post-meta">
+                        作者: <a href="/u/<%= article.author %>"><%= article.author %></a>&nbsp; |
+                        时间: <%= article.createTime.minute %>&nbsp; |
+                        标签:
+                        <% article.tags.forEach(function(tag, index) { %>
+                        <% if(tag) { %>
+                        <a href="#"><%= tag %></a>
+                        <% }%>
+                        <% }) %>
+                    </p>
+                    <div class="blog-content"><%- article.content %></div>
+                    <!--<p><a class="btn btn-sm" href="#" role="button">more &raquo;</a></p>-->
+                    <p class="blog-post-meta">
+                        <a href="#">阅读 <span class="badge"><%= article.pv %></span></a>&nbsp; |
+                        <a href="#">评论 <span class="badge"><%= article.comments.length %></span></a>&nbsp; |
+                        <a href="#">
+                            转载
+                        <span class="badge">
+                            <% if(article.reprintInfo && article.reprintInfo.reprintTo) { %>
+                            <%= article.reprintInfo.reprintTo.length %>
+                            <% } else { %>
+                            <%= 0 %>
+                            <% } %>
+                        </span>
+                        </a>
+                    </p>
+                </div><!--/.col-xs-12.col-lg-9-->
+                <% }) %>
+                <% } else { %>
+                <div class="col-xs-12 col-lg-9 jumbotron blog-post">
+                <p class="info-align">目前还没有任何博文可供阅览 ^_^</p>
+                </div><!--/.col-xs-12.col-lg-9-->
+                <% } %>
+
+
+                <!-- 文章分页内容 -->
+                <%- include ./common/paging %>
+            </div><!--/row-->
+        </div><!--/.col-xs-12.col-sm-9-->
+
+    </div><!--/row-->
+</div>
+
+<!-- 底部页尾内容 -->
+<%- include ./common/footer %>

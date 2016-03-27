@@ -1,0 +1,32 @@
+<!-- 头部内容 -->
+<%- include ./common/header %>
+
+<body>
+<!-- 顶部导航内容 -->
+<%- include ./common/nav %>
+
+<div class="container">
+    <div class="blog-header">
+        <h1 class="blog-title">RORO彦的Blog</h1>
+        <hr/>
+        <p class="lead blog-description">发现新鲜事，发现好玩事！</p>
+    </div>
+
+    <!-- 登录输入界面 -->
+    <form class="form-signup" action="/register.do" method="POST">
+        <h2 class="form-signup-heading">
+            <span class="glyphicon glyphicon-plus"></span>&nbsp;请注册
+        </h2>
+        <label for="inputUsrName" class="sr-only">UserName</label>
+        <input type="text" id="inputUsrName" name="username" class="form-control" placeholder="用户名称" required autofocus/>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="设置密码" required/>
+        <label for="inputRePasswd" class="sr-only">Re-Password</label>
+        <input type="password" id="inputRePasswd" name="repassword" class="form-control" placeholder="确认密码" required/>
+        <span class="errinfo"></span>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">注册</button>
+    </form>
+</div>
+
+<!-- 底部页尾内容 -->
+<%- include ./common/footer %>

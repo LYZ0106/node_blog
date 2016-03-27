@@ -1,0 +1,40 @@
+<!-- 头部内容 -->
+<%- include ./common/header %>
+
+<body>
+<!-- 顶部导航内容 -->
+<%- include ./common/nav %>
+
+<div class="container">
+    <div class="blog-header">
+        <h1 class="blog-title">RORO彦的Blog</h1>
+        <hr/>
+        <p class="lead blog-description">发现新鲜事，发现好玩事！</p>
+    </div>
+
+    <div class="row row-offcanvas row-offcanvas-left">
+        <!-- 侧边工具栏 -->
+        <%- include ./common/sidebar %>
+
+        <div class="col-xs-12 col-lg-9">
+            <div class="blog-post">
+                <h3 class="sub-func-title">
+                    &nbsp;<span class="glyphicon glyphicon-menu-right"></span>&nbsp;
+                    <%= title %>
+                </h3>
+
+                <form action="/search.do" method="POST" class="form-inline">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-globe"></div>
+                        <input type="text" class="form-control" name="content" placeholder="请输入搜索内容……"/>
+                    </div>
+                    <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                </form>
+            </div>
+        </div><!--/.col-xs-12.col-lg-9-->
+
+    </div><!--/row-->
+</div>
+
+<!-- 底部页尾内容 -->
+<%- include ./common/footer %>

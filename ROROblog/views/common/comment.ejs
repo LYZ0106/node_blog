@@ -1,0 +1,33 @@
+<div class="blog-post">
+    <% article.comments.forEach(function(comment, index) { %>
+    <div class="comment-info">
+        <p>
+            <img src="<%= comment.headIcon %>" alt=""/>&nbsp;
+            <a href="<%= comment.website %>"><%= comment.reviewer %></a>&nbsp;
+            评论于：<span><%= comment.createTime %></span>
+            <% if(user && (user.userName==article.author)) { %>
+            <a class="btn btn-sm" id="rmComBtn" href="/rm-comment/<%= article.author %>/<%= article.createTime.day %>/<%= article.title %>/<%= comment.reviewer %>/<%= comment.createTime %>" role="button">
+                <span class="glyphicon glyphicon-trash"></span>&nbsp;删除
+            </a>
+            <% } %>
+        </p>
+        <p><%- comment.content %></p>
+        <hr/>
+    </div>
+    <% }) %>
+
+    <% if(user) {%>
+    <form class="comment-set" action="/comment/<%= article.author %>/<%= article.createTime.day %>/<%= article.title %>" method="POST">
+        <label for="commUser">用户名称：</label>
+        <input type="text" id="commUser" name="commUser" class="form-control" value="<%= user.userName %>" required/>
+        <label for="email">邮箱地址：</label>
+        <input type="text" id="email" name="email" class="form-control" value="<%= user.eMail %>" required/>
+        <label for="website">主页网址：</label>
+        <input type="text" id="website" name="website" class="form-control" value="/u/<%= user.userName %>" required/>
+        <label for="commCon">评论内容：</label>
+        <textarea name="commCon" id="commCon" class="form-control" cols="15" rows="5"></textarea>
+        <span class="errinfo"></span>
+        <button class="btn btn-sm btn-primary btn-block" type="submit">提交评论</button>
+    </form>
+    <% } %>
+</div>

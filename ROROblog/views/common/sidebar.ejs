@@ -1,0 +1,67 @@
+<div class="col-xs-6 col-sm-3 sidebar-offcanvas side-padleft" id="sidebar">
+	<!-- About Info -->
+	<div class="sidebar-module sidebar-module-inset">
+		<img src="/images/owl.png" class="img-responsive" alt="Cinque Terre"/>
+		<% if(user) { %>
+		<h4><%= user.nickName %></h4>
+		<h5>
+			<span class="glyphicon glyphicon-grain"></span>
+			<% if (0 == user.userTitle) { %>
+			小清新
+			<% }else if(1 == user.userTitle) { %>
+			御姐
+			<% }else if(2 == user.userTitle) { %>
+			小萝莉
+			<% }else if(3 == user.userTitle) { %>
+			高冷的逗逼
+			<% }else if(4 == user.userTitle) { %>
+			成熟的大叔
+			<% }else if(5 == user.userTitle) { %>
+			买菜骂架大妈
+			<% }else if(6 == user.userTitle) { %>
+			路人甲
+			<% } %>
+		</h5>
+
+		<p>
+			<%- user.profile %>
+		</p>
+		<% } else { %>
+		<h4>RORO彦</h4>
+		<h5>
+			<span class="glyphicon glyphicon-grain"></span>
+			熬夜加班汪
+		</h5>
+
+		<p>
+			专攻的领域：<br/>
+			HTNL5、CSS3、 Node.JS、MongoDB<br/>
+			（ps：上面的当然是我。。。）<br/>
+
+		</p>
+		<% } %>
+	</div>
+	<!-- Sidebar Menu -->
+	<div class="list-group">
+		<a href="/" class="list-group-item">
+			<span class="glyphicon glyphicon-home"></span>
+			主页
+		</a>
+		<a href="/archive.do" class="list-group-item">
+			<span class="glyphicon glyphicon-list-alt"></span>
+			存档
+		</a>
+		<a href="/tags.do" class="list-group-item">
+			<span class="glyphicon glyphicon-tags"></span>
+			标签
+		</a>
+		<a href="/search.do" class="list-group-item">
+			<span class="glyphicon glyphicon-search"></span>
+			搜索
+		</a>
+		<a href="/links.do" class="list-group-item">
+			<span class="glyphicon glyphicon-link"></span>
+			友情链接
+		</a>
+	</div>
+</div><!--/.sidebar-offcanvas-->

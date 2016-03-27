@@ -1,0 +1,44 @@
+<!-- 头部内容 -->
+<%- include ./common/header %>
+
+<body>
+<!-- 顶部导航内容 -->
+<%- include ./common/nav %>
+
+<div class="container">
+    <div class="blog-header">
+        <h1 class="blog-title">RORO彦的Blog</h1>
+        <hr/>
+        <p class="lead blog-description">发现新鲜事，发现好玩事！</p>
+    </div>
+
+    <div class="row row-offcanvas row-offcanvas-left">
+        <!-- 侧边工具栏 -->
+        <%- include ./common/sidebar %>
+
+        <div class="col-xs-12 col-sm-9">
+            <form class="form-publish" action="/edit/<%= article.author %>/<%= article.createTime.day %>/<%= article.title %>" method="POST">
+                <label for="articleTitle">标题:</label>
+                <input type="text" id="articleTitle" name="articleTitle" class="form-control form-title" value="<%= article.title %>" required />
+
+                <label for="articleText">正文:</label>
+                <textarea name="articleText" id="articleText" class="form-control form-article" cols="100" rows="20" required><%= article.content %></textarea>
+
+                <label class="form-tag">标签:</label>
+                <input type="text" id="articleTag1" name="articleTag1" class="form-tag" value="<%= article.tags[0] %>"/>
+                <input type="text" id="articleTag2" name="articleTag2" class="form-tag" value="<%= article.tags[1] %>"/>
+                <input type="text" id="articleTag3" name="articleTag3" class="form-tag" value="<%= article.tags[2] %>"/>
+                <br/>
+                <br/>
+                <br/>
+                <button class="btn btn-sm btn-primary btn-block" type="submit" id="submit">确认</button>
+                <button class="btn btn-sm btn-primary btn-block" type="button" id="cancel">取消</button>
+
+            </form>
+        </div><!--/.col-xs-12.col-sm-9-->
+
+    </div><!--/row-->
+</div>
+
+<!-- 底部页尾内容 -->
+<%- include ./common/footer %>

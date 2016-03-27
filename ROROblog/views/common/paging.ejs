@@ -1,0 +1,23 @@
+<nav class="col-xs-12 col-lg-9 nav-pager">
+    <ul class="pager">
+        <% if(!isFirstPage) { %>
+        <li>
+            <a href="?curPage=<%= curPage-1 %>">
+                <span class="glyphicon glyphicon-hand-left"></span>
+                &nbsp;上一页
+            </a>
+        </li>
+        <% } %>
+        <% if(!isLastPage) { %>
+        <li>
+            <a href="?curPage=<%= curPage+1 %>">
+                下一页&nbsp;
+                <span class="glyphicon glyphicon-hand-right"></span>
+            </a>
+        </li>
+        <% } %>
+
+
+
+    </ul>
+</nav>

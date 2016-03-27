@@ -1,0 +1,59 @@
+<!-- 头部内容 -->
+<%- include ./common/header %>
+
+<body>
+<!-- 顶部导航内容 -->
+<%- include ./common/nav %>
+
+<div class="container">
+    <div class="blog-header">
+        <h1 class="blog-title">RORO彦的Blog</h1>
+        <hr/>
+        <p class="lead blog-description">发现新鲜事，发现好玩事！</p>
+    </div>
+
+    <!-- 用户信息界面 -->
+    <form class="form-setinfo" action="/setinfo.do" method="POST">
+        <h2 class="form-setinfo-heading">
+            <span class="glyphicon glyphicon-cog"></span>&nbsp;信息设置
+        </h2>
+        <label for="usrName">用户账号:</label>
+        <p class="form-control-static"><%= user.userName %></p>
+        <label for="nickName">昵称:</label>
+        <input type="text" id="nickName" name="nickName" class="form-control" value="<%= user.nickName %>" required/>
+        <label for="usrTitle">头衔:</label>
+        <select name="usrTitle" id="usrTitle" class="form-control selStyle">
+            <option value="0" <% if(0 == user.userTitle) {%>selected="selected"<% } %>>
+                小清新
+            </option>
+            <option value="1" <% if(1 == user.userTitle) {%>selected="selected"<% } %>>
+                御姐
+            </option>
+            <option value="2" <% if(2 == user.userTitle) {%>selected="selected"<% } %>>
+                小萝莉
+            </option>
+            <option value="3" <% if(3 == user.userTitle) {%>selected="selected"<% } %>>
+                高冷的逗逼
+            </option>
+            <option value="4" <% if(4 == user.userTitle) {%>selected="selected"<% } %>>
+                成熟的大叔
+            </option>
+            <option value="5" <% if(5 == user.userTitle) {%>selected="selected"<% } %>>
+                买菜骂架大妈
+            </option>
+            <option value="6" <% if(6 == user.userTitle) {%>selected="selected"<% } %>>
+                路人甲
+            </option>
+        </select>
+        <label for="eMail">电子邮箱:</label>
+        <input type="email" id="eMail" name="eMail" class="form-control" value="<%= user.eMail %>" required/>
+        <label for="profile">个人简述:</label>
+        <textarea name="profile" id="profile" class="form-control" cols="20" rows="5" required><%= user.profile %></textarea>
+
+        <span class="errinfo"></span>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">保存</button>
+    </form>
+</div>
+
+<!-- 底部页尾内容 -->
+<%- include ./common/footer %>

@@ -1,0 +1,54 @@
+<nav class="navbar navbar-fixed-top navbar-inverse navbar-bgcolor">
+    <div class="container">
+        <!-- Nav Logo -->
+        <div class="navbar-header">
+            <a href="/">
+                <img src="/images/nodeIcon.png" class="img-responsive" alt="Cinque Terre"/>
+            </a>
+
+        </div>
+        <!-- Nav Button -->
+        <div class="navbar-btn navbar-right btn-group">
+            <button type="button" class="btn navbtn-color">
+                <% if(!user){%>
+                <span class="glyphicon glyphicon-menu-hamburger"></span>
+                <% }else{ %>
+                <span class="glyphicon glyphicon-user"></span>&nbsp;<span><%= user.userName %></span>
+                <% } %>
+            </button>
+            <button type="button" class="btn navbtn-color dropdown-toggle"
+                    data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">切换下拉菜单</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <% if(!user){%>
+                <li>
+                    <a href="/login.do" class="navbar-link">
+                        <span class="glyphicon glyphicon-user"></span>&nbsp;登录
+                    </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a href="/register.do" class="navbar-link">
+                        <span class="glyphicon glyphicon-plus"></span>&nbsp;注册
+                    </a>
+                </li>
+                <% }else{ %>
+                <li>
+                    <a href="/setinfo.do" class="navbar-link">
+                        <span class="glyphicon glyphicon-cog"></span>&nbsp;设置
+                    </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a href="/logout.do" class="navbar-link">
+                        <span class="glyphicon glyphicon-off"></span>&nbsp;注销
+                    </a>
+                </li>
+                <% } %>
+            </ul>
+        </div>
+
+    </div><!-- /.container -->
+</nav>

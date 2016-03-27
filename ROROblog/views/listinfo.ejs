@@ -1,0 +1,47 @@
+<!-- 头部内容 -->
+<%- include ./common/header %>
+
+<body>
+<!-- 顶部导航内容 -->
+<%- include ./common/nav %>
+
+<div class="container">
+    <div class="blog-header">
+        <h1 class="blog-title">RORO彦的Blog</h1>
+        <hr/>
+        <p class="lead blog-description">发现新鲜事，发现好玩事！</p>
+    </div>
+
+    <div class="row row-offcanvas row-offcanvas-left">
+        <!-- 侧边工具栏 -->
+        <%- include ./common/sidebar %>
+
+        <div class="col-xs-12 col-lg-9">
+            <div class="blog-post">
+                <ul class="archive">
+                    <li>
+                        <h3 class="sub-func-title">
+                            &nbsp;<span class="glyphicon glyphicon-menu-right"></span>&nbsp;
+                            <%= title %>
+                        </h3>
+                    </li>
+                    <% var lastYear = 0 %>
+                    <% articles.forEach(function (article, index) { %>
+                    <% if (lastYear != article.createTime.year) { %>
+                    <li><h3><%= article.createTime.year %></h3></li>
+                    <% lastYear = article.createTime.year } %>
+                    <li>
+                        <time><%= article.createTime.day %></time>&nbsp;&nbsp;
+                        文章：<a href="/u/<%= article.author %>/<%= article.createTime.day %>/<%= article.title %>"><%= article.title %></a>&nbsp;&nbsp;
+                        作者：<a href="/u/<%= article.author %>"><%= article.author %></a>
+                    </li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div><!--/.col-xs-12.col-lg-9-->
+
+    </div><!--/row-->
+</div>
+
+<!-- 底部页尾内容 -->
+<%- include ./common/footer %>
